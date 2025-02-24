@@ -6,7 +6,10 @@ import './App.css'
 
 //Paths 
 import Navbar from './components/Navbar'
+
 const Home = lazy(() => import('./pages/Home'))
+const Products =  lazy(() => import('./pages/Products')) 
+const ProductDetails =  lazy(() => import('./pages/ProductDetails')) 
 function App() {
 
   return (
@@ -16,6 +19,9 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product/:id"  element={<ProductDetails />} />
+
           </Routes>
         </Suspense>
       </BrowserRouter>
