@@ -6,7 +6,6 @@ import './App.css'
 
 //Paths 
 import Navbar from './components/Navbar'
-
 const Home = lazy(() => import('./pages/Home'))
 const Products =  lazy(() => import('./pages/Products')) 
 const ProductDetails =  lazy(() => import('./pages/ProductDetails')) 
@@ -14,7 +13,7 @@ function App() {
 
   return (
     <div>
-          <BrowserRouter>
+        <BrowserRouter>
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
