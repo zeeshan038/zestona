@@ -4,7 +4,7 @@ const products = [
     {
         id: 1,
         image: antiAcne,
-        title: "Vitamin C",
+        title: "Vitamin B",
         price: 2300,
       },
       {

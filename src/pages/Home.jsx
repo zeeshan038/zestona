@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import banner1 from '../assets/banner1.png';
 import Products from './Products';
+import Videos from './Videos';
 
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
         </Slider>
       </div>
       <Products />
+      <Videos/>
     </div>
   );
 };
