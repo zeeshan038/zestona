@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 import products from "../products";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === parseInt(id));
-
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {
-    return <h2 className="text-center text-2xl font-bold">Product Not Found</h2>;
+    return <h2 className="text-center text-2xl font-bold">Products not found</h2>;
   }
 
   // Increase quantity
@@ -20,13 +22,21 @@ const ProductDetails = () => {
     if (quantity > 1) setQuantity((prev) => prev - 1);
   };
 
-  // Filter related products (excluding the current product)
-  const relatedProducts = products.filter((p) => p.id !== product.id).slice(0, 4);
+  // Add to Cart function
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        ...product,
+        quantity,
+        totalPrice: product.price * quantity, 
+      })
+    );
+  };
 
   return (
     <div className="max-w-6xl mt-20 mx-auto p-6">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-20">
-        {/* Product Image - Left */}
+        {/*  Product Image - Left */}
         <div className="w-full lg:w-1/2">
           <img
             src={product.image}
@@ -35,13 +45,11 @@ const ProductDetails = () => {
           />
         </div>
 
-        {/* Product Details - Right */}
+        {/*  Product Details - Right */}
         <div className="w-full lg:w-1/2 space-y-4">
           <h1 className="text-4xl font-bold">{product.title}</h1>
-          <p className="text-gray-600 text-xl font-semibold">Price: ${product.price}</p>
-          <p className="text-gray-700 leading-relaxed">
-            This is a detailed description of the product, highlighting its features,
-            benefits, and specifications.
+          <p className="text-gray-600 text-xl font-semibold">
+            Price: ${product.price}
           </p>
 
           {/* Quantity Selector */}
@@ -56,16 +64,20 @@ const ProductDetails = () => {
               </button>
             </div>
           </div>
-
-          <button className="py-3 mt-4 w-full cursor-pointer border border-gray-700 rounded-md hover:border-black transition">
+          
+          {/* Add to Cart Button */}
+          <button
+            onClick={handleAddToCart}
+            className="py-3 mt-4 w-full cursor-pointer border border-gray-700 rounded-md hover:border-black transition"
+          >
             Add to Cart
           </button>
+
           <button className="py-3 bg-[#0c3241] text-white w-full rounded-md hover:bg-[#354c55] cursor-pointer transition">
             Buy Now
           </button>
         </div>
       </div>
-
     </div>
   );
 };

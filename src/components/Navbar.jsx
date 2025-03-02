@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("total quantity" , totalQuantity) 
   return (
     <nav className="">
       <div className="container mx-auto px-4 py-3 flex justify-between md:justify-around items-center">
@@ -27,15 +29,14 @@ const Navbar = () => {
           <a href="#" className="text-2xl font-bold">MyLogo</a>
         </div>
 
-
-        <div className="flex gap-14">
-
-          <h1>Cart</h1>
-          <h1>Cart</h1>
+        <div className="flex gap-8">
+          <div>
+           <Link to={'/cart'}>
+           <HiOutlineShoppingBag className="cursor-pointer text-[22px]" />
+           </Link>
+          </div>
         </div>
       </div>
-
-
 
       {/* Mobile Menu (Sliding from Right) */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-blue-700 shadow-lg transform ${isOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out md:hidden`}>

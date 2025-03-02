@@ -2,7 +2,9 @@ import React from 'react'
 
 const Bundles = () => {
   return (
-    <div>Bundles</div>
+    <div>
+      <h1>Shop by bundles</h1>
+    </div>
   )
 }
 

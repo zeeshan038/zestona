@@ -2,12 +2,13 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import banner1 from '../assets/banner1.png';
+import banner1 from '../assets/banner.jpeg';
 import Products from './Products';
 import Videos from './Videos';
 
-
 const Home = () => {
+  
+  // react slick settings
   const settings = {
     dots: true,
     infinite: true,
@@ -24,18 +25,18 @@ const Home = () => {
       <div className="w-full">
         <Slider {...settings}>
           <div>
-            <img src={banner1} alt="Banner 1" className="w-full" />
+            <img src={banner1} alt="Banner 1" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
           </div>
           <div>
-            <img src={banner1} alt="Banner 2" className="w-full" />
+            <img src={banner1} alt="Banner 2" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
           </div>
           <div>
-            <img src={banner1} alt="Banner 3" className="w-full" />
+            <img src={banner1} alt="Banner 3" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
           </div>
         </Slider>
       </div>
       <Products />
-      <Videos/>
+      <Videos />
     </div>
   );
 };

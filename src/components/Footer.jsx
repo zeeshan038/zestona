@@ -7,19 +7,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
         
         {/* Logo */}
-        <div className="text-2xl font-bold">
-          <span className="text-blue-500">Your</span>Logo
+        <div className="font-bold">
+          <span className="text-4xl">Your Logo</span>
+          <p >Your skin remede</p>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="my-4 md:my-0">
-          <ul className="flex space-x-6 text-sm md:text-base">
-            <li><a href="/" className="hover:text-blue-400">Home</a></li>
-            <li><a href="/about" className="hover:text-blue-400">About</a></li>
-            <li><a href="/services" className="hover:text-blue-400">Services</a></li>
-            <li><a href="/contact" className="hover:text-blue-400">Contact</a></li>
-          </ul>
-        </nav>
+       
 
         {/* Social Media Links */}
         <div className="flex space-x-4">
