@@ -21,19 +21,23 @@ const Navbar = () => {
             <Link to={'/'} className="block text-lg hover:text-gray-300">Home</Link>
             <Link to={'/products'} className="block text-lg hover:text-gray-300">Products</Link>
             <Link to={'/contact'} className="block text-lg hover:text-gray-300">Contact</Link>
-
           </ul>
         </div>
-
         <div>
-          <a href="#" className="text-2xl font-bold">MyLogo</a>
+          <a href="#" className="text-2xl font-bold">
+            Zestona
+          </a>
         </div>
-
-        <div className="flex gap-8">
+        <div className="flex gap-8 relative">
           <div>
            <Link to={'/cart'}>
            <HiOutlineShoppingBag className="cursor-pointer text-[22px]" />
            </Link>
+           {totalQuantity > 0 && (
+          <span className="absolute -top-3 -right-2  text-[13px] w-5 h-5 flex items-center justify-center rounded-full">
+            {totalQuantity}
+          </span>
+           )}
           </div>
         </div>
       </div>

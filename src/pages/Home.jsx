@@ -7,7 +7,6 @@ import Products from './Products';
 import Videos from './Videos';
 
 const Home = () => {
-  
   // react slick settings
   const settings = {
     dots: true,

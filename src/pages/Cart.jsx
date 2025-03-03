@@ -7,18 +7,18 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto h-screen">
       <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
 
       {cartItems.length === 0 ? (
-       <div>
-         <p className="text-gray-500 h-[75vh]  text-3xl">Your cart is empty.</p>
-         <Link to={'/products'}>
-           <button className=" bg-[]"> 
-            Cotinue Shopping
-           </button>
-         </Link>
-       </div>
+        <div className="flex flex-col items-center justify-center h-[75vh]">
+          <p className="text-gray-500 text-3xl">Your cart is empty.</p>
+          <Link to="/products">
+            <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+              Continue Shopping
+            </button>
+          </Link>
+        </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border">
@@ -51,16 +51,26 @@ const Cart = () => {
         </div>
       )}
 
+      {/* Cart Summary & Checkout Button */}
       {cartItems.length > 0 && (
-        <div className="mt-4 text-right">
+        <div className="mt-6 text-right">
           <p className="text-lg font-semibold">Total Items: {totalQuantity}</p>
           <p className="text-lg font-semibold">Total Price: ${totalPrice.toFixed(2)}</p>
-          <button
-            className="mt-4 bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-800"
-            onClick={() => dispatch(clearCart())}
-          >
-            Clear Cart
-          </button>
+
+          <div className="flex justify-end gap-4 mt-4">
+            <button
+              className="bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-800 transition"
+              onClick={() => dispatch(clearCart())}
+            >
+              Clear Cart
+            </button>
+
+            <Link to="/checkout">
+              <button className="bg-[#0c3241] text-white px-6 py-2 rounded hover:bg-green-700 transition">
+                Continue to Checkout
+              </button>
+            </Link>
+          </div>
         </div>
       )}
     </div>
