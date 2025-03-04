@@ -17,7 +17,7 @@ const Checkout = () => {
   };
 
   const handleCheckout = () => {
-    const phoneNumber = "923045321730"; 
+    const phoneNumber = "923479819738"; 
     let orderMessage = `🛒 *New Order Received!* \n\n`;
     
     cartItems.forEach((item, index) => {
