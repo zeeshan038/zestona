@@ -1,96 +1,130 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const [userDetails, setUserDetails] = useState({
-    name: "",
-    phone: "",
+    phoneno: "",
+    firstname: "",
+    lastname: "",
     address: "",
+    city: "",
+    postalCode: "",
   });
+  const [errors, setErrors] = useState({});
 
-  const cartItems = [
-    { name: "Face Serum", price: 1500, quantity: 2 },
-    { name: "Moisturizer", price: 2000, quantity: 1 },
-  ];
+  const { cartItems } = useSelector((state) => state.cart);
 
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
+  const validateFields = () => {
+    let newErrors = {};
+    Object.keys(userDetails).forEach((key) => {
+      if (!userDetails[key]) {
+        newErrors[key] = "This field is required";
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleCheckout = () => {
-    const phoneNumber = "923479819738"; 
+    if (!validateFields()) return;
+
+    const phoneNumber = "923479819738";
     let orderMessage = `🛒 *New Order Received!* \n\n`;
     
     cartItems.forEach((item, index) => {
-      orderMessage += `${index + 1}. ${item.name} - ${item.quantity} x ${item.price} PKR\n`;
+      orderMessage += `${index + 1}. ${item.title} - ${item.quantity} x ${item.price} PKR\n`;
+  
     });
 
-    orderMessage += `\n📍 *Delivery Details:* \n👤 Name: ${userDetails.name} \n📞 Phone: ${userDetails.phone} \n🏠 Address: ${userDetails.address}`;
-    
+    orderMessage += `\n📍 *Delivery Details:* \n👤 Name: ${userDetails.firstname} ${userDetails.lastname} \n📞 Phone: ${userDetails.phoneno} \n🏠 Address: ${userDetails.address}, \n🏠 City ${userDetails.city}, \n🏠 PostalCode${userDetails.postalCode}`;
+    orderMessage +=  `total Price ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}  PKR\n`;
     const encodedMessage = encodeURIComponent(orderMessage);
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.location.href = whatsappURL;
+    window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg flex gap-6">
+    <div className="max-w-6xl mx-auto mt-10 p-6 bg-white rounded-lg flex flex-col md:flex-row gap-6">
       {/* Left Side - Form */}
-      <div className="w-1/2">
-        <h2 className="text-xl font-bold mb-4">Checkout</h2>
-        <div>
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={userDetails.name}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-            placeholder="Enter your name"
-          />
+      <div className="w-full md:w-1/2">
+        <h2 className="text-xl font-bold mb-4">Delivery</h2>
+        <div className="flex flex-col gap-4">
+          {["firstname", "lastname", "phoneno", "address", "city", "postalCode"].map((field, index) => (
+            <div key={index}>
+              <label className="block text-sm font-medium capitalize">{field.replace(/([A-Z])/g, ' $1')}</label>
+              <input
+                type="text"
+                name={field}
+                value={userDetails[field]}
+                onChange={handleChange}
+                className={`w-full p-2 border rounded mt-1 ${errors[field] ? "border-red-500" : ""}`}
+                placeholder={`Enter your ${field}`}
+              />
+              {errors[field] && <p className="text-red-500 text-sm">{errors[field]}</p>}
+            </div>
+          ))}
         </div>
-        <div className="mt-4">
-          <label className="block text-sm font-medium">Phone</label>
-          <input
-            type="text"
-            name="phone"
-            value={userDetails.phone}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-            placeholder="Enter your phone number"
-          />
+        <div className="mt-5">
+              <h1 className="text-2xl font-bold">Shipping Method</h1>
+              <div className="flex justify-between items-center border border-black  p-2 rounded-md mt-2">
+                    <h1>Standard</h1>
+                    <h1>Free</h1>   
+              </div>
         </div>
-        <div className="mt-4">
-          <label className="block text-sm font-medium">Address</label>
-          <textarea
-            name="address"
-            value={userDetails.address}
-            onChange={handleChange}
-            className="w-full p-2 border rounded mt-1"
-            placeholder="Enter your address"
-          ></textarea>
+        <div className="mt-5">
+              <h1 className="text-2xl font-bold">Payment </h1>
+              <div className="flex justify-between items-center border border-black  p-2 rounded-md mt-2">
+                    <h1>
+                    Cash on Delivery (COD)</h1>
+                     
+              </div>
         </div>
         <button
           onClick={handleCheckout}
-          className="mt-6 w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
+          className="mt-6 w-full bg-[#0c3241] hidden md:block text-white p-2 rounded hover:bg-green-600"
         >
-          Continue to WhatsApp
+          Complete Order
         </button>
       </div>
 
       {/* Right Side - Selected Products */}
-      <div className="w-1/2 bg-gray-100 p-4 rounded">
-        <h2 className="text-xl font-bold mb-4">Selected Products</h2>
+       <div className="md:w-1/2   md:mt-12 ">
+       <div className="w-full p-4   rounded">
         <ul>
           {cartItems.map((item, index) => (
-            <li key={index} className="flex justify-between border-b py-2">
-              <span>{item.name} (x{item.quantity})</span>
-              <span>{item.price * item.quantity} PKR</span>
-            </li>
+            <div key={index} className="flex space-y-2 items-center justify-between">
+              <div className="flex items-center gap-4">
+                <img src={item.image} alt="" className="h-24 rounded-md" />
+                <p>{item.title}</p>
+              </div>
+              <div>
+                <p>RS {item.price * item.quantity}</p>
+              </div>
+            </div>
           ))}
         </ul>
-        <div className="mt-4 text-lg font-semibold">
-          Total: {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} PKR
+        <div className="mt-4 text-lg">
+          <div className="flex text-[16px] justify-between">
+            Subtotal: <span>PKR {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} </span>
+          </div>
+          <div className="flex mt-2 text-[16px] justify-between">
+            Shipping: <span>FREE</span>
+          </div>
+          <div className="flex mt-2 text-[16px] justify-between">
+            Total: <span>PKR {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} </span>
+          </div>
         </div>
       </div>
+      <button
+          onClick={handleCheckout}
+          className="mt-6 w-full  md:hidden bg-[#0c3241] text-white p-2 rounded hover:bg-green-600"
+        >
+          Complete Order
+        </button>
+       </div>
     </div>
   );
 };

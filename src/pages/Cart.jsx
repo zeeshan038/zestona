@@ -33,7 +33,7 @@ const Cart = () => {
             <tbody>
               {cartItems.map((item) => (
                 <tr key={item.id} className="border border-gray-300">
-                  <td className="border border-gray-300 px-4 py-2">{item.name}</td>
+                  <td className="border border-gray-300 px-4 py-2">{item.title}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">{item.quantity}</td>
                   <td className="border border-gray-300 px-4 py-2 text-right">${(item.price * item.quantity).toFixed(2)}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">
