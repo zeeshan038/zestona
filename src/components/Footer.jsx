@@ -8,8 +8,8 @@ const Footer = () => {
         
         {/* Logo */}
         <div className="font-bold">
-          <span className="text-4xl">Your Logo</span>
-          <p >Your skin remede</p>
+          <span className="text-4xl">Zestona</span>
+       
         </div>
 
        

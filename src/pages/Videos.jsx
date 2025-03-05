@@ -4,17 +4,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import zainab from "../assets/zainab.mp4";
-import zainabThumb from "../assets/zainabThumb.jpeg"; // Thumbnail for the video
+import zainabThumb from "../assets/zainabThumb.jpeg";
+import  review2 from "../assets/zestReview2.mp4"; 
 
 const Videos = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const videos = [
     { id: 1, url: zainab, thumbnail: zainabThumb },
-    { id: 2, url: zainab, thumbnail: zainabThumb },
-    { id: 3, url: zainab, thumbnail: zainabThumb },
-    { id: 4, url: zainab, thumbnail: zainabThumb },
-    { id: 5, url: zainab, thumbnail: zainabThumb },
+    { id: 2, url: review2,  }
   ];
 
   const CustomPrevArrow = ({ onClick }) => (
@@ -39,7 +37,7 @@ const Videos = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -69,11 +67,11 @@ const Videos = () => {
           <div
             key={video.id}
             className={`px-2 transition-transform duration-500 ease-in-out  rounded-2xl
-              ${index === activeIndex + 1 ? "scale-110 shadow-2xl rounded-2xl border-4 border-gray-300 " : "scale-100 rounded-2xl opacity-80"}
+        
             `}
           >
             <video
-              className="w-full  rounded-2xl border-4 border-gray-200 shadow-lg"
+              className="w-full   lg:h-[800px]  rounded-2xl border-4 border-gray-200 shadow-lg"
               controls
               poster={video.thumbnail || undefined}
             >

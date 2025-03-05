@@ -22,17 +22,11 @@ const Home = () => {
   return (
     <div>
       <div className="w-full">
-        <Slider {...settings}>
+   
           <div>
             <img src={banner1} alt="Banner 1" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
           </div>
-          <div>
-            <img src={banner1} alt="Banner 2" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
-          </div>
-          <div>
-            <img src={banner1} alt="Banner 3" className="w-full h-full lg:h-[700px] xl:h-[870px]" />
-          </div>
-        </Slider>
+      
       </div>
       <Products />
       <Videos />
