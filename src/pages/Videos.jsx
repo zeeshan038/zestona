@@ -37,8 +37,6 @@ const Videos = () => {
     dots: false,
     slidesToShow: 2,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     beforeChange: (oldIndex, newIndex) => setActiveIndex(newIndex),
