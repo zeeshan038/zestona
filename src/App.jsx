@@ -9,6 +9,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
+import WhatsApp from './components/Whatsapp';
 const  Checkout = lazy(() => import('./pages/Checkout')) 
 const Contact = lazy(() => import('./pages/Contact')) 
 const Home = lazy(() => import('./pages/Home'))
@@ -21,8 +22,10 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar />
+        <WhatsApp/>
         <Suspense fallback={<div>
           <Loader/>
+  
         </div>}>
           <Routes>
             <Route path='/' element={<Home />} />

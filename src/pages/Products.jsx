@@ -12,7 +12,7 @@ const Products = () => {
             <div key={product.id} className=" p-4 rounded-lg  ">
               <img src={product.image} alt={product.title} className=" h-72  w-full md:w-60   rounded-md mb-4" />
               <h2 className="text-lg font-semibold">{product.title}</h2>
-              <p className="text-gray-600">Price: {product.price} Rs</p>
+              <p className="text-gray-600"> {product.price} Rs</p>
 
             </div>
           </Link>
