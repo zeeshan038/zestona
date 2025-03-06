@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const Products = () => {
   return (
     <div className="mx-auto max-w-7xl mt-20">
-
       <h1 className='text-3xl font-bold text-center' >Explore our prodcuts</h1>
       <div className="flex justify-center flex-wrap items-center gap-4 mt-6">
         {products.map((product) => (

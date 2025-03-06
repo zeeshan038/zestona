@@ -35,7 +35,7 @@ const Cart = () => {
                 <tr key={item.id} className="border border-gray-300">
                   <td className="border border-gray-300 px-4 py-2">{item.title}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">{item.quantity}</td>
-                  <td className="border border-gray-300 px-4 py-2 text-right">${(item.price * item.quantity).toFixed(2)}</td>
+                  <td className="border border-gray-300 px-4 py-2 text-right">PKR {(item.price * item.quantity).toFixed(2)}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">
                     <button
                       className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
@@ -55,7 +55,7 @@ const Cart = () => {
       {cartItems.length > 0 && (
         <div className="mt-6 text-right">
           <p className="text-lg font-semibold">Total Items: {totalQuantity}</p>
-          <p className="text-lg font-semibold">Total Price: ${totalPrice.toFixed(2)}</p>
+          <p className="text-lg font-semibold">Total Price: PKR {totalPrice.toFixed(2)}</p>
 
           <div className="flex justify-end gap-4 mt-4">
             <button
