@@ -28,10 +28,9 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = () => {
-   
-    navigate("/checkout");
+    navigate("/checkout", { state: { product: { ...product, quantity, totalPrice: product.price * quantity } } });
   };
-
+  
   return (
     <div className="max-w-6xl mt-20 mx-auto p-6">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-20">
@@ -42,8 +41,6 @@ const ProductDetails = () => {
           <h1 className="text-4xl font-bold">{product.title}</h1>
           <p className="text-gray-700">{product.description}</p>
           <p className="font-bold text-lg">Price: RS.{product.price} PKR</p>
-
-
 
           <div className="flex items-center space-x-4 mt-4">
             <div className="border flex items-center justify-between space-x-10 border-black p-1 px-3">

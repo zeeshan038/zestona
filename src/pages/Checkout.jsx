@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const Checkout = () => {
+  const location = useLocation();
+  const singleProduct = location.state?.product;
+  const { cartItems } = useSelector((state) => state.cart);
+
+  // If a single product is passed, use it; otherwise, use cartItems
+  const checkoutItems = singleProduct ? [singleProduct] : cartItems;
+
   const [userDetails, setUserDetails] = useState({
     phoneno: "",
     firstname: "",
@@ -10,9 +18,8 @@ const Checkout = () => {
     city: "",
     postalCode: "",
   });
-  const [errors, setErrors] = useState({});
 
-  const { cartItems } = useSelector((state) => state.cart);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
@@ -34,14 +41,14 @@ const Checkout = () => {
 
     const phoneNumber = "923479819738";
     let orderMessage = `🛒 *New Order Received!* \n\n`;
-    
-    cartItems.forEach((item, index) => {
+
+    checkoutItems.forEach((item, index) => {
       orderMessage += `${index + 1}. ${item.title} - ${item.quantity} x ${item.price} PKR\n`;
-  
     });
 
-    orderMessage += `\n📍 *Delivery Details:* \n👤 Name: ${userDetails.firstname} ${userDetails.lastname} \n📞 Phone: ${userDetails.phoneno} \n🏠 Address: ${userDetails.address}, \n🏠 City ${userDetails.city}, \n🏠 PostalCode${userDetails.postalCode}`;
-    orderMessage +=  `total Price ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}  PKR\n`;
+    orderMessage += `\n📍 *Delivery Details:* \n👤 Name: ${userDetails.firstname} ${userDetails.lastname} \n📞 Phone: ${userDetails.phoneno} \n🏠 Address: ${userDetails.address}, \n🏠 City: ${userDetails.city}, \n🏠 Postal Code: ${userDetails.postalCode} \n`;
+    orderMessage += `\n💰 *Total Price:* PKR ${checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}\n`;
+
     const encodedMessage = encodeURIComponent(orderMessage);
     window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
@@ -68,19 +75,17 @@ const Checkout = () => {
           ))}
         </div>
         <div className="mt-5">
-              <h1 className="text-2xl font-bold">Shipping Method</h1>
-              <div className="flex justify-between items-center border border-black  p-2 rounded-md mt-2">
-                    <h1>Standard</h1>
-                    <h1>Free</h1>   
-              </div>
+          <h1 className="text-2xl font-bold">Shipping Method</h1>
+          <div className="flex justify-between items-center border border-black p-2 rounded-md mt-2">
+            <h1>Standard</h1>
+            <h1>Free</h1>
+          </div>
         </div>
         <div className="mt-5">
-              <h1 className="text-2xl font-bold">Payment </h1>
-              <div className="flex justify-between items-center border border-black  p-2 rounded-md mt-2">
-                    <h1>
-                    Cash on Delivery (COD)</h1>
-                     
-              </div>
+          <h1 className="text-2xl font-bold">Payment</h1>
+          <div className="flex justify-between items-center border border-black p-2 rounded-md mt-2">
+            <h1>Cash on Delivery (COD)</h1>
+          </div>
         </div>
         <button
           onClick={handleCheckout}
@@ -91,40 +96,40 @@ const Checkout = () => {
       </div>
 
       {/* Right Side - Selected Products */}
-       <div className="md:w-1/2   md:mt-12 ">
-       <div className="w-full p-4   rounded">
-        <ul>
-          {cartItems.map((item, index) => (
-            <div key={index} className="flex space-y-2 items-center justify-between">
-              <div className="flex items-center gap-4">
-                <img src={item.image} alt="" className="h-24 rounded-md" />
-                <p>{item.title}</p>
+      <div className="md:w-1/2 md:mt-12">
+        <div className="w-full p-4 rounded">
+          <ul>
+            {checkoutItems.map((item, index) => (
+              <div key={index} className="flex space-y-2 items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <img src={item.image} alt="" className="h-24 rounded-md" />
+                  <p>{item.title}</p>
+                </div>
+                <div>
+                  <p>RS {item.price * item.quantity}</p>
+                </div>
               </div>
-              <div>
-                <p>RS {item.price * item.quantity}</p>
-              </div>
+            ))}
+          </ul>
+          <div className="mt-4 text-lg">
+            <div className="flex text-[16px] justify-between">
+              Subtotal: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span>
             </div>
-          ))}
-        </ul>
-        <div className="mt-4 text-lg">
-          <div className="flex text-[16px] justify-between">
-            Subtotal: <span>PKR {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} </span>
-          </div>
-          <div className="flex mt-2 text-[16px] justify-between">
-            Shipping: <span>FREE</span>
-          </div>
-          <div className="flex mt-2 text-[16px] justify-between">
-            Total: <span>PKR {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)} </span>
+            <div className="flex mt-2 text-[16px] justify-between">
+              Shipping: <span>FREE</span>
+            </div>
+            <div className="flex mt-2 text-[16px] justify-between">
+              Total: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <button
+        <button
           onClick={handleCheckout}
-          className="mt-6 w-full  md:hidden bg-[#0c3241] text-white p-2 rounded hover:bg-green-600"
+          className="mt-6 w-full md:hidden bg-[#0c3241] text-white p-2 rounded hover:bg-green-600"
         >
           Complete Order
         </button>
-       </div>
+      </div>
     </div>
   );
 };
