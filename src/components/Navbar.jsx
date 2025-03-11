@@ -24,9 +24,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          <a href="#" className="text-2xl font-bold">
+          <Link  to={'/'} className="text-2xl font-bold">
             Zestona
-          </a>
+          </Link>
+         
         </div>
         <div className="flex gap-8 relative">
           <div>

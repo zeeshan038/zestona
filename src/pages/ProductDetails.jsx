@@ -30,7 +30,7 @@ const ProductDetails = () => {
   const handleBuyNow = () => {
     navigate("/checkout", { state: { product: { ...product, quantity, totalPrice: product.price * quantity } } });
   };
-  
+
   return (
     <div className="max-w-6xl mt-20 mx-auto p-6">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-20">
@@ -40,7 +40,12 @@ const ProductDetails = () => {
         <div className="w-full lg:w-1/2 space-y-4">
           <h1 className="text-4xl font-bold">{product.title}</h1>
           <p className="text-gray-700">{product.description}</p>
-          <p className="font-bold text-lg">Price: RS.{product.price} PKR</p>
+
+          {/* Pricing Section */}
+          <div className="flex items-center space-x-2">
+            <p className="text-gray-500 line-through text-lg">Rs.{product.originalPrice} PKR</p>
+            <p className="">Rs.{product.discountedPrice} PKR</p>
+          </div>
 
           <div className="flex items-center space-x-4 mt-4">
             <div className="border flex items-center justify-between space-x-10 border-black p-1 px-3">
@@ -50,21 +55,22 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="">
+          <div>
             <h3 className="font-semibold text-lg">How to Use:</h3>
-            <p className="">{product.usage1}</p>
-            <p className="">{product.usage2}</p>
-            <p className="">{product.usage3}</p>
-            <p className="">{product.usage4}</p>
+            <p>{product.usage1}</p>
+            <p>{product.usage2}</p>
+            <p>{product.usage3}</p>
+            <p>{product.usage4}</p>
           </div>
 
           <button onClick={handleAddToCart} className="py-3 cursor-pointer mt-4 w-full border border-gray-700 rounded-md hover:border-black transition">
             Add to Cart
           </button>
-          <button onClick={handleBuyNow} className="py-3 bg-[#0c3241]  cursor-pointer text-white w-full rounded-md hover:bg-[#354c55] transition">
+          <button onClick={handleBuyNow} className="py-3 bg-[#0c3241] cursor-pointer text-white w-full rounded-md hover:bg-[#354c55] transition">
             Buy Now
           </button>
         </div>
+
       </div>
     </div>
   );
