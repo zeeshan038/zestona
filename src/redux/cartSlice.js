@@ -14,11 +14,11 @@ const cartSlice = createSlice({
       const item = state.cartItems.find((p) => p.id === action.payload.id);
       if (item) {
         item.quantity += action.payload.quantity;
-        item.totalPrice += action.payload.price * action.payload.quantity;
+        item.totalPrice += action.payload.discountedPrice * action.payload.quantity;
       } else {
         state.cartItems.push({ 
           ...action.payload, 
-          totalPrice: action.payload.price * action.payload.quantity 
+          totalPrice: action.payload.discountedPrice * action.payload.quantity 
         });
       }
 

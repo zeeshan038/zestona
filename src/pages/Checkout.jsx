@@ -59,7 +59,7 @@ const Checkout = () => {
       <div className="w-full md:w-1/2">
         <h2 className="text-xl font-bold mb-4">Delivery</h2>
         <div className="flex flex-col gap-4">
-          {["firstname", "lastname", "phoneno", "address", "city", "postalCode"].map((field, index) => (
+          {["first name", "last name", "phone no", "address", "city", "postalCode"].map((field, index) => (
             <div key={index}>
               <label className="block text-sm font-medium capitalize">{field.replace(/([A-Z])/g, ' $1')}</label>
               <input
@@ -106,20 +106,20 @@ const Checkout = () => {
                   <p>{item.title}</p>
                 </div>
                 <div>
-                  <p>RS {item.price * item.quantity}</p>
+                  <p>RS {item.discountedPrice * item.quantity}</p>
                 </div>
               </div>
             ))}
           </ul>
           <div className="mt-4 text-lg">
             <div className="flex text-[16px] justify-between">
-              Subtotal: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span>
+              Subtotal: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.discountedPrice * item.quantity, 0)}</span>
             </div>
             <div className="flex mt-2 text-[16px] justify-between">
               Shipping: <span>FREE</span>
             </div>
             <div className="flex mt-2 text-[16px] justify-between">
-              Total: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span>
+              Total: <span>PKR {checkoutItems.reduce((acc, item) => acc + item.discountedPrice * item.quantity, 0)}</span>
             </div>
           </div>
         </div>

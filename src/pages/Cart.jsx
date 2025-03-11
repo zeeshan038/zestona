@@ -35,7 +35,7 @@ const Cart = () => {
                 <tr key={item.id} className="border border-gray-300">
                   <td className="border border-gray-300 px-4 py-2">{item.title}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">{item.quantity}</td>
-                  <td className="border border-gray-300 px-4 py-2 text-right">PKR {(item.price * item.quantity).toFixed(2)}</td>
+                  <td className="border border-gray-300 px-4 py-2 text-right">PKR {(item.discountedPrice * item.quantity).toFixed(2)}</td>
                   <td className="border border-gray-300 px-4 py-2 text-center">
                     <button
                       className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
