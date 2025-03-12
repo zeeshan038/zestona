@@ -6,6 +6,38 @@ import facemask from "./assets/facemask.jpeg";
 const products = [
   {
     id: 1,
+    image: facemask,
+    title: "Face Mask (Pack of 4)",
+    originalPrice: 1800,
+    discountedPrice: 1200,
+
+    description:
+      "A deep-cleansing face mask that removes impurities, minimizes pores, and refreshes the skin for a healthy glow.",
+    usage1: "⁠⁠Begin with a thorough deep cleanse to refresh and purify the skin.",
+    usage2:
+      "⁠Gently apply the face mask, allowing its soothing properties to envelop your skin.",
+    usage3:
+      "⁠Leave the mask to work its magic for 15 minutes, letting it nourish and rejuvenate.",
+    usage4: "⁠⁠Rinse your face once more, revealing a beautifully revitalized complexion.",
+  },
+  {
+    id: 2,
+    image: facemask,
+    title: "Face Mask (Pack of 1)",
+    originalPrice: 600,
+    discountedPrice: 400,
+
+    description:
+      "A deep-cleansing face mask that removes impurities, minimizes pores, and refreshes the skin for a healthy glow.",
+    usage1: "⁠⁠Begin with a thorough deep cleanse to refresh and purify the skin.",
+    usage2:
+      "⁠Gently apply the face mask, allowing its soothing properties to envelop your skin.",
+    usage3:
+      "⁠Leave the mask to work its magic for 15 minutes, letting it nourish and rejuvenate.",
+    usage4: "⁠⁠Rinse your face once more, revealing a beautifully revitalized complexion.",
+  },
+  {
+    id: 3,
     image: antiAcne,
     title: "Anti Acne",
     originalPrice: 1500,
@@ -20,7 +52,7 @@ const products = [
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
   },
   {
-    id: 2,
+    id: 4,
     image: antiWrinklle,
     title: "Anti Wrinkle",
     originalPrice: 1600,
@@ -35,7 +67,7 @@ const products = [
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
   },
   {
-    id: 3,
+    id: 5,
     image: vitaminC,
     title: "Vitamin C Serum",
     originalPrice: 1800,
@@ -48,22 +80,7 @@ const products = [
     usage3:
       "Let the serum rest on your skin for a few minutes to work its magic.",
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
-  },
-  {
-    id: 4,
-    image: facemask,
-    title: "Face Mask",
-    originalPrice: 1400,
-    discountedPrice: 1200,
-    description:
-      "A deep-cleansing face mask that removes impurities, minimizes pores, and refreshes the skin for a healthy glow.",
-    usage1: "⁠⁠Begin with a thorough deep cleanse to refresh and purify the skin.",
-    usage2:
-      "⁠Gently apply the face mask, allowing its soothing properties to envelop your skin.",
-    usage3:
-      "⁠Leave the mask to work its magic for 15 minutes, letting it nourish and rejuvenate.",
-    usage4: "⁠⁠Rinse your face once more, revealing a beautifully revitalized complexion.",
-  },
+  }
 ];
 
 export default products;
