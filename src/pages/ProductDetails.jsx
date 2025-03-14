@@ -43,7 +43,6 @@ const ProductDetails = () => {
 
           {/* Pricing Section */}
           <div className="flex items-center space-x-2">
-            <p className="text-gray-500 line-through text-lg">Rs.{product.originalPrice} PKR</p>
             <p className="">Rs.{product.discountedPrice} PKR</p>
           </div>
 

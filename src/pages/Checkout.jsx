@@ -39,7 +39,7 @@ const Checkout = () => {
   const handleCheckout = () => {
     if (!validateFields()) return;
 
-    const phoneNumber = "923479819738";
+    const phoneNumber = "923085417057";
     let orderMessage = `🛒 *New Order Received!* \n\n`;
 
     checkoutItems.forEach((item, index) => {

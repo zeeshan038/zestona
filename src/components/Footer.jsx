@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
         {/* Social Media Links */}
         <div className="flex space-x-4">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/zestona.ltd?igsh=MWluY3MzNjRtamwwdA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="text-xl hover:text-pink-500 transition" />
           </a>
         </div>

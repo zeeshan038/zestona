@@ -17,7 +17,7 @@ const Products = () => {
               />
               <h2 className="text-lg font-semibold">{product.title}</h2>
               <div className="flex items-center space-x-2">
-                <p className="text-gray-500 line-through">Rs.{product.originalPrice} PKR</p>
+                
                 <p className="">Rs.{product.discountedPrice} PKR</p>
               </div>
             </div>

@@ -4,7 +4,7 @@ const Loader = () => {
       <div className="flex space-x-2">
         <span className="w-4 h-4  bg-[#0c3241] rounded-full animate-wave delay-0"></span>
         <span className="w-4 h-4  bg-[#0c3241] rounded-full animate-wave delay-200"></span>
-        <span className="w-4 h-4  bg-[#0c3241] rounded-full animate-wave delay-400"></span>
+        <span className="w-4 h-4  bg-[rgb(12,50,65)] rounded-full animate-wave delay-400"></span>
       </div>
 
       <style>
