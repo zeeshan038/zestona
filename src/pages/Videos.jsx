@@ -3,16 +3,24 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import zainab from "../assets/zainab.mp4";
+import zainab from "../assets/zainabNew.mp4";
 import zainabThumb from "../assets/zainabThumb.jpeg";
 import  review2 from "../assets/zestReview2.mp4"; 
+import  pr3 from "../assets/PR3.mp4"; 
+import  eman from "../assets/eman.mp4"; 
+import maseraw from '../assets/maseraw.mp4';
 
 const Videos = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const videos = [
+
     { id: 1, url: zainab, thumbnail: zainabThumb },
-    { id: 2, url: review2,  }
+
+    { id: 2, url: review2,  },
+    { id: 3, url: pr3,  } ,
+    { id: 4, url: maseraw,  } ,
+    { id: 5, url: eman,  } 
   ];
 
   const CustomPrevArrow = ({ onClick }) => (
@@ -35,7 +43,7 @@ const Videos = () => {
 
   const settings = {
     dots: false,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
@@ -67,7 +75,7 @@ const Videos = () => {
             `}
           >
             <video
-              className="w-full   lg:h-[800px]  rounded-2xl border-4 border-gray-200 shadow-lg"
+              className="w-full     rounded-2xl border-4 border-gray-200 shadow-lg"
               controls
               poster={video.thumbnail || undefined}
             >

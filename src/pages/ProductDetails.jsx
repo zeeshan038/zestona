@@ -23,12 +23,12 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity, totalPrice: product.price * quantity }));
+    dispatch(addToCart({ ...product, quantity, totalPrice: product.discountedPrice * quantity }));
     toast.success("Item added to cart!", { autoClose: 2000 });
   };
 
   const handleBuyNow = () => {
-    navigate("/checkout", { state: { product: { ...product, quantity, totalPrice: product.price * quantity } } });
+    navigate("/checkout", { state: { product: { ...product, quantity, totalPrice: product.discountedPrice * quantity } } });
   };
 
   return (

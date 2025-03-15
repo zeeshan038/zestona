@@ -7,7 +7,7 @@ const Checkout = () => {
   const singleProduct = location.state?.product;
   const { cartItems } = useSelector((state) => state.cart);
 
-  // If a single product is passed, use it; otherwise, use cartItems
+
   const checkoutItems = singleProduct ? [singleProduct] : cartItems;
 
   const [userDetails, setUserDetails] = useState({
@@ -38,20 +38,29 @@ const Checkout = () => {
 
   const handleCheckout = () => {
     if (!validateFields()) return;
-
+  
     const phoneNumber = "923085417057";
     let orderMessage = `🛒 *New Order Received!* \n\n`;
-    console.log("Clicked on order");
+  
+    console.log("Checkout Items:", checkoutItems); 
+    let totalPrice = 0;
     checkoutItems.forEach((item, index) => {
-      orderMessage += `${index + 1}. ${item.title} - ${item.quantity} x ${item.price} PKR\n`;
+      const price = Number(item.discountedPrice) || 0;
+      const quantity = Number(item.quantity) || 1; 
+      const itemTotal = price * quantity;
+      totalPrice += itemTotal;
+  
+      orderMessage += `${index + 1}. ${item.title} - ${quantity} x ${price} PKR\n`;
     });
-
+  
     orderMessage += `\n📍 *Delivery Details:* \n👤 Name: ${userDetails.firstname} ${userDetails.lastname} \n📞 Phone: ${userDetails.phoneno} \n🏠 Address: ${userDetails.address}, \n🏠 City: ${userDetails.city}, \n🏠 Postal Code: ${userDetails.postalCode} \n`;
-    orderMessage += `\n💰 *Total Price:* PKR ${checkoutItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}\n`;
-
+    orderMessage += `\n💰 *Total Price:* PKR ${totalPrice}\n`;
+  
+    console.log("Final Order Message:", orderMessage); // Debugging
     const encodedMessage = encodeURIComponent(orderMessage);
     window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
+  
 
   return (
     <div className="max-w-6xl mx-auto mt-10 p-6 bg-white rounded-lg flex flex-col md:flex-row gap-6">
