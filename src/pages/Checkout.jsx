@@ -41,7 +41,7 @@ const Checkout = () => {
 
     const phoneNumber = "923085417057";
     let orderMessage = `🛒 *New Order Received!* \n\n`;
-
+    console.log("Clicked on order");
     checkoutItems.forEach((item, index) => {
       orderMessage += `${index + 1}. ${item.title} - ${item.quantity} x ${item.price} PKR\n`;
     });
@@ -59,7 +59,7 @@ const Checkout = () => {
       <div className="w-full md:w-1/2">
         <h2 className="text-xl font-bold mb-4">Delivery</h2>
         <div className="flex flex-col gap-4">
-          {["first name", "last name", "phone no", "address", "city", "postalCode"].map((field, index) => (
+          {["firstname", "lastname", "phoneno", "address", "city", "postalCode"].map((field, index) => (
             <div key={index}>
               <label className="block text-sm font-medium capitalize">{field.replace(/([A-Z])/g, ' $1')}</label>
               <input
