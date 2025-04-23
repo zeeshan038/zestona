@@ -7,7 +7,7 @@ const products = [
   {
     id: 1,
     image: facemask,
-    title: "Face Mask (Pack of 4)",
+    title: "Korean Sheet Mask (Pack of 4)",
     originalPrice: 1800,
     discountedPrice: 1200,
 
@@ -19,11 +19,12 @@ const products = [
     usage3:
       "⁠Leave the mask to work its magic for 15 minutes, letting it nourish and rejuvenate.",
     usage4: "⁠⁠Rinse your face once more, revealing a beautifully revitalized complexion.",
+    sold : 147
   },
   {
     id: 2,
     image: facemask,
-    title: "Face Mask (Pack of 1)",
+    title: "Korean Sheet Mask (Pack of 1)",
     originalPrice: 600,
     discountedPrice: 400,
 
@@ -35,6 +36,7 @@ const products = [
     usage3:
       "⁠Leave the mask to work its magic for 15 minutes, letting it nourish and rejuvenate.",
     usage4: "⁠⁠Rinse your face once more, revealing a beautifully revitalized complexion.",
+    sold : 97
   },
   {
     id: 3,
@@ -50,6 +52,7 @@ const products = [
     usage3:
       "Let the serum rest on your skin for a few minutes to work its magic.",
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
+    sold : 52
   },
   {
     id: 4,
@@ -65,6 +68,7 @@ const products = [
     usage3:
       "Let the serum rest on your skin for a few minutes to work its magic.",
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
+    sold : 69
   },
   {
     id: 5,
@@ -80,6 +84,7 @@ const products = [
     usage3:
       "Let the serum rest on your skin for a few minutes to work its magic.",
     usage4: "⁠Rinse your face thoroughly to reveal refreshed, clear skin.",
+    sold : 73
   }
 ];
 

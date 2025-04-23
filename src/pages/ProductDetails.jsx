@@ -35,15 +35,25 @@ const ProductDetails = () => {
     <div className="max-w-6xl mt-20 mx-auto p-6">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-20">
         <div className="w-full lg:w-1/2">
-          <img src={product.image} alt={product.title} className="w-full object-cover rounded-lg shadow-md" />
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-auto max-h-[400px] object-contain rounded-lg shadow-md"
+          />
+
         </div>
         <div className="w-full lg:w-1/2 space-y-4">
           <h1 className="text-4xl font-bold">{product.title}</h1>
           <p className="text-gray-700">{product.description}</p>
 
           {/* Pricing Section */}
-          <div className="flex items-center space-x-2">
-            <p className="">Rs.{product.discountedPrice} PKR</p>
+          <div className="flex items-center space-x-6">
+            <p className="text-[30px]">Rs.{product.discountedPrice} PKR</p>
+            <p className=" flex items-center gap-2">
+              <span role="img" aria-label="fire" className="text-2xl">🔥</span>
+              <span className="text-[20px] font-semibold"> {product.sold} items sold</span>
+
+            </p>
           </div>
 
           <div className="flex items-center space-x-4 mt-4">
@@ -62,12 +72,15 @@ const ProductDetails = () => {
             <p>{product.usage4}</p>
           </div>
 
+
+
           <button onClick={handleAddToCart} className="py-3 cursor-pointer mt-4 w-full border border-gray-700 rounded-md hover:border-black transition">
             Add to Cart
           </button>
           <button onClick={handleBuyNow} className="py-3 bg-[#0c3241] cursor-pointer text-white w-full rounded-md hover:bg-[#354c55] transition">
             Buy Now
           </button>
+
         </div>
 
       </div>
