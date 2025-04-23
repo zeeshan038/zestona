@@ -25,7 +25,6 @@ function App() {
         <WhatsApp/>
         <Suspense fallback={<div>
           <Loader/>
-  
         </div>}>
           <Routes>
             <Route path='/' element={<Home />} />
