@@ -13,7 +13,7 @@ const Products = () => {
               <img
                 src={product.image}
                 alt={product.title}
-                className="h-72 w-full md:w-60 rounded-md mb-4"
+                className="h-72 w-72 md:w-60 rounded-md mb-4"
               />
               <h2 className="text-lg font-semibold">{product.title}</h2>
               <div className="flex items-center space-x-2">
